@@ -1,34 +1,49 @@
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict
+from uuid import UUID
+
+from pydantic import BaseModel, ConfigDict, Field
 
 
-# Create conversation request
+# CREATE CONVERSATION
 class ChatConversationCreate(BaseModel):
     title: str = "New Conversation"
 
 
-# Conversation response
+# UPDATE CONVERSATION
+class ChatConversationUpdate(BaseModel):
+    title: str | None = Field(
+        default=None,
+        min_length=1,
+        max_length=200
+    )
+
+    is_pinned: bool | None = None
+
+
+# CONVERSATION RESPONSE
 class ChatConversationResponse(BaseModel):
-    id: int
+    id: UUID
     user_id: int
     title: str
+    is_pinned: bool
     created_at: datetime
     updated_at: datetime
+    last_message_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
 
 
-# Save message request
+# CREATE MESSAGE
 class ChatMessageCreate(BaseModel):
     role: str
     content: str
 
 
-# Message response
+# MESSAGE RESPONSE
 class ChatMessageResponse(BaseModel):
     id: int
-    conversation_id: int
+    conversation_id: UUID
     role: str
     content: str
     created_at: datetime
@@ -36,6 +51,8 @@ class ChatMessageResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# Conversation with its messages
+# CONVERSATION DETAIL
 class ChatConversationDetail(ChatConversationResponse):
-    messages: list[ChatMessageResponse] = []
+    messages: list[ChatMessageResponse] = Field(
+        default_factory=list
+    )

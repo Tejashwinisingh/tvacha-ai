@@ -8,6 +8,8 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import VerifyEmail from './pages/VerifyEmail/VerifyEmail'
 import Dashboard from './pages/Dashboard/Dashboard'
+import SkincareAgent from './pages/SkincareAgent/SkincareAgent'
+import ChatPage from './pages/ChatPage/ChatPage'
 
 // Home page
 function Home() {
@@ -65,6 +67,7 @@ function Home() {
         <div className="hero-visual">
           <div className="visual-circle">
             <span className="leaf">🌿</span>
+
             <div className="visual-text">
               <h2>Healthy Skin</h2>
               <p>Starts with understanding</p>
@@ -75,6 +78,7 @@ function Home() {
 
       <section id="about" className="about">
         <h2>Skincare, Made Smarter.</h2>
+
         <p>
           TvachaAI brings skincare knowledge and intelligent
           technology together to help you make informed
@@ -93,7 +97,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Home */}
         <Route path="/" element={<Home />} />
+
+        {/* Authentication */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
@@ -112,9 +119,22 @@ function App() {
           element={<VerifyEmail />}
         />
 
+        {/* User Dashboard */}
         <Route
           path="/dashboard"
           element={<Dashboard />}
+        />
+
+        {/* New Chat History Interface */}
+        <Route
+          path="/chat"
+          element={<ChatPage />}
+        />
+
+        {/* Existing AI Skincare Assistant */}
+        <Route
+          path="/skincare-agent"
+          element={<SkincareAgent />}
         />
       </Routes>
     </BrowserRouter>

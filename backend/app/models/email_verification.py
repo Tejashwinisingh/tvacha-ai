@@ -13,6 +13,7 @@ from app.db.database import Base
 
 
 class EmailVerificationToken(Base):
+
     __tablename__ = "email_verification_tokens"
 
     id = Column(
@@ -48,3 +49,4 @@ class EmailVerificationToken(Base):
         DateTime(timezone=True),
         server_default=func.now()
     )
+

@@ -13,3 +13,5 @@ fastapi-mail
 google-genai
 python-multipart
 Pillow
+python-docx
+PyMuPDF

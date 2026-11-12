@@ -59,14 +59,20 @@ function Dashboard() {
   }
 
   if (loading) {
-    return <div className="dashboard-loading">Loading your dashboard...</div>
+    return (
+      <div className="dashboard-loading">
+        Loading your dashboard...
+      </div>
+    )
   }
 
   if (error) {
     return (
       <div className="dashboard-loading">
         <p>{error}</p>
-        <button onClick={handleLogout}>Return to Login</button>
+        <button onClick={handleLogout}>
+          Return to Login
+        </button>
       </div>
     )
   }
@@ -76,29 +82,59 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
 
+      {/* SIDEBAR */}
       <aside className="dashboard-sidebar">
-        <div className="dashboard-brand">🌿 TvachaAI</div>
+        <div className="dashboard-brand">
+          🌿 TvachaAI
+        </div>
 
         <nav className="dashboard-nav">
-          <a href="#overview" className="active">Overview</a>
-          <a href="#profile">My Profile</a>
-          <a href="#skin-profile">Skin Profile</a>
-          <a href="#skin-history">Skin History</a>
-          <a href="#settings">Settings</a>
+          <a href="#overview" className="active">
+            Overview
+          </a>
+
+          <a href="#profile">
+            My Profile
+          </a>
+
+          <a href="#skin-profile">
+            Skin Profile
+          </a>
+
+          <a href="#skin-history">
+            Skin History
+          </a>
+
+          <a href="#settings">
+            Settings
+          </a>
         </nav>
 
-        <button className="logout-button" onClick={handleLogout}>
+        <button
+          className="logout-button"
+          onClick={handleLogout}
+        >
           Logout
         </button>
       </aside>
 
+      {/* MAIN DASHBOARD */}
       <main className="dashboard-main" id="overview">
 
+        {/* HEADER */}
         <header className="dashboard-header">
           <div>
-            <p className="dashboard-label">YOUR PERSONAL SKINCARE SPACE</p>
-            <h1>Welcome back, {user.full_name}! 🌱</h1>
-            <p>Let's take care of your skin, one step at a time.</p>
+            <p className="dashboard-label">
+              YOUR PERSONAL SKINCARE SPACE
+            </p>
+
+            <h1>
+              Welcome back, {user.full_name}! 🌱
+            </h1>
+
+            <p>
+              Let's take care of your skin, one step at a time.
+            </p>
           </div>
 
           <div className="dashboard-avatar">
@@ -106,22 +142,30 @@ function Dashboard() {
           </div>
         </header>
 
+        {/* WELCOME SECTION */}
         <section className="dashboard-welcome">
           <div>
             <span>✨ YOUR SKINCARE JOURNEY</span>
+
             <h2>Your skin has a story.</h2>
+
             <p>
               Understand your skin, discover your preferences,
               and build healthier skincare habits.
             </p>
           </div>
-          <div className="dashboard-leaf">🌿</div>
+
+          <div className="dashboard-leaf">
+            🌿
+          </div>
         </section>
 
+        {/* ACCOUNT PROFILE */}
         <section className="dashboard-section" id="profile">
           <h2>Your Account</h2>
 
           <div className="dashboard-grid">
+
             <div className="dashboard-card">
               <span>👤</span>
               <h3>Full Name</h3>
@@ -137,38 +181,84 @@ function Dashboard() {
             <div className="dashboard-card">
               <span>✓</span>
               <h3>Account Status</h3>
-              <p>{user.is_verified ? 'Verified' : 'Not verified'}</p>
+              <p>
+                {user.is_verified ? 'Verified' : 'Not verified'}
+              </p>
             </div>
+
           </div>
         </section>
 
+        {/* EXPLORE FEATURES */}
         <section className="dashboard-section">
           <h2>Explore TvachaAI</h2>
 
           <div className="dashboard-grid">
-            <div className="dashboard-card feature-card" id="skin-profile">
+
+            {/* SKIN PROFILE */}
+            <div
+              className="dashboard-card feature-card"
+              id="skin-profile"
+            >
               <span>🧴</span>
+
               <h3>My Skin Profile</h3>
-              <p>Manage your skin type and skincare preferences.</p>
+
+              <p>
+                Manage your skin type and skincare preferences.
+              </p>
+
               <small>Coming soon</small>
             </div>
 
-            <div className="dashboard-card feature-card">
+            {/* AI SKINCARE ASSISTANT */}
+            <div
+              className="dashboard-card feature-card clickable-card"
+              onClick={() => navigate('/chat')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) => {
+                if (
+                  event.key === 'Enter' ||
+                  event.key === ' '
+                ) {
+                  event.preventDefault()
+                  navigate('/chat')
+                }
+              }}
+            >
               <span>✨</span>
-              <h3>AI Skin Analysis</h3>
-              <p>Explore personalized skincare guidance.</p>
+
+              <h3>AI Skincare Assistant</h3>
+
+              <p>
+                Chat with your personal AI skincare companion
+                and get personalized skincare guidance.
+              </p>
+
+              <small>Start Chatting →</small>
+            </div>
+
+            {/* SKIN HISTORY */}
+            <div
+              className="dashboard-card feature-card"
+              id="skin-history"
+            >
+              <span>📖</span>
+
+              <h3>Skin History</h3>
+
+              <p>
+                Keep track of your skincare journey.
+              </p>
+
               <small>Coming soon</small>
             </div>
 
-            <div className="dashboard-card feature-card" id="skin-history">
-              <span>📖</span>
-              <h3>Skin History</h3>
-              <p>Keep track of your skincare journey.</p>
-              <small>Coming soon</small>
-            </div>
           </div>
         </section>
 
+        {/* FOOTER */}
         <footer className="dashboard-footer">
           Your skin. Your care. Your intelligence. 🌿
         </footer>

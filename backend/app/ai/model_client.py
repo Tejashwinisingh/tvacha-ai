@@ -1,8 +1,18 @@
 
+import logging
+import time
+
 from google import genai
+from google.genai import errors, types
 
 from app.core.config import settings
 from app.agents.agent_prompts import TVACHAI_SYSTEM_PROMPT
+
+
+logger = logging.getLogger(__name__)
+
+MAX_RETRIES = 3
+RETRY_DELAY = 2
 
 
 def get_gemini_client():
@@ -18,12 +28,13 @@ def get_gemini_client():
 
 def generate_ai_response(
     prompt: str,
-    profile_context: str = ""
+    profile_context: str = "",
+    image_attachments: list[dict] | None = None
 ) -> str:
 
     client = get_gemini_client()
 
-    contents = f"""
+    text_content = f"""
 {TVACHAI_SYSTEM_PROMPT}
 
 USER SKIN PROFILE:
@@ -33,9 +44,53 @@ USER MESSAGE:
 {prompt}
 """
 
-    response = client.models.generate_content(
-        model=settings.AI_MODEL,
-        contents=contents
-    )
+    # Build Gemini content parts
+    contents = [
+        types.Part.from_text(text=text_content)
+    ]
 
-    return response.text or "I'm sorry, I couldn't generate a response."
+    # Add image attachments when provided
+    for attachment in image_attachments or []:
+
+        image_data = attachment["data"]
+        mime_type = attachment["mime_type"]
+
+        contents.append(
+            types.Part.from_bytes(
+                data=image_data,
+                mime_type=mime_type
+            )
+        )
+
+    for attempt in range(1, MAX_RETRIES + 1):
+
+        try:
+            response = client.models.generate_content(
+                model=settings.AI_MODEL,
+                contents=contents
+            )
+
+            if response.text:
+                return response.text.strip()
+
+            logger.warning("Gemini returned an empty response.")
+
+            return "I'm sorry, I couldn't generate a response. Please try again."
+
+        except errors.ServerError as exc:
+
+            logger.warning(
+                "Gemini server error on attempt %s/%s: %s",
+                attempt,
+                MAX_RETRIES,
+                exc
+            )
+
+            if attempt == MAX_RETRIES:
+                logger.error("Gemini remained unavailable after retries.")
+                raise
+
+            delay = RETRY_DELAY * (2 ** (attempt - 1))
+            time.sleep(delay)
+
+    raise RuntimeError("TvachaAI is temporarily unavailable.")

@@ -179,6 +179,24 @@
   border-radius: 20px;
 }
 
+/* AI SKINCARE ASSISTANT CARD */
+
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(49, 93, 67, 0.12);
+  border-color: #b9cbb9;
+}
+
+.clickable-card:focus-visible {
+  outline: 2px solid #315d43;
+  outline-offset: 4px;
+}
+
 .dashboard-footer {
   text-align: center;
   color: #819083;

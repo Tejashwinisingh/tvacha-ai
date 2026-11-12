@@ -1,0 +1,383 @@
+
+.skincare-agent-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f7f7f0;
+  color: #263b30;
+  font-family: inherit;
+}
+
+.agent-sidebar {
+  width: 260px;
+  min-height: 100vh;
+  padding: 30px 20px;
+  background: #e9eee5;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.agent-brand {
+  font-size: 25px;
+  font-weight: 700;
+  color: #315d43;
+  margin-bottom: 35px;
+}
+
+.agent-back-button,
+.agent-new-chat {
+  padding: 12px;
+  border: 1px solid #d4e0d2;
+  border-radius: 10px;
+  background: white;
+  color: #315d43;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.agent-back-button:hover,
+.agent-new-chat:hover {
+  background: #dce8d9;
+}
+
+.agent-sidebar-content {
+  margin-top: 45px;
+}
+
+.agent-sidebar-heading {
+  color: #718b73;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.agent-new-chat {
+  width: 100%;
+  text-align: center;
+  background: #315d43;
+  color: white;
+  border: none;
+}
+
+.agent-new-chat:hover {
+  background: #264b35;
+  color: white;
+}
+
+.agent-sidebar-note {
+  margin-top: 30px;
+  padding: 18px;
+  background: #dce8d9;
+  border-radius: 15px;
+}
+
+.agent-sidebar-note span {
+  font-size: 25px;
+}
+
+.agent-sidebar-note h3 {
+  font-size: 15px;
+  margin: 12px 0 8px;
+}
+
+.agent-sidebar-note p {
+  color: #607265;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.agent-sidebar-footer {
+  margin-top: auto;
+  padding-top: 25px;
+  color: #819083;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.agent-main {
+  flex: 1;
+  min-width: 0;
+  padding: 35px 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.agent-eyebrow {
+  color: #718b73;
+  font-size: 11px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+}
+
+.agent-header h1 {
+  font-size: 29px;
+  margin: 10px 0;
+}
+
+.agent-header p:last-child {
+  color: #77847a;
+}
+
+.agent-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  background: #e5efe2;
+  color: #315d43;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.agent-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4b9b61;
+}
+
+.agent-chat-container {
+  flex: 1;
+  min-height: 500px;
+  max-height: calc(100vh - 165px);
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #e8eae2;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.agent-chat-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 25px;
+}
+
+.agent-message-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.agent-message-row.user {
+  justify-content: flex-end;
+}
+
+.agent-message-avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: #e9eee5;
+  border-radius: 50%;
+}
+
+.agent-message-content {
+  max-width: 78%;
+}
+
+.agent-message-row.user .agent-message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.agent-message-name {
+  color: #718076;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.agent-message-bubble {
+  padding: 14px 17px;
+  border-radius: 5px 15px 15px 15px;
+  background: #edf3e9;
+  color: #344c3a;
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.agent-message-row.user .agent-message-bubble {
+  background: #315d43;
+  color: white;
+  border-radius: 15px 5px 15px 15px;
+}
+
+.agent-message-actions {
+  margin-top: 7px;
+}
+
+.agent-message-actions button {
+  background: transparent;
+  border: none;
+  color: #64816a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.agent-typing {
+  color: #718076;
+  font-style: italic;
+}
+
+.agent-input-area {
+  padding: 18px 22px;
+  border-top: 1px solid #e8eae2;
+  background: #fcfcf9;
+}
+
+.agent-input-area textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 55px;
+  max-height: 150px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #263b30;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.agent-input-area textarea::placeholder {
+  color: #9aa59a;
+}
+
+.agent-input-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.agent-mic-button,
+.agent-stop-button {
+  padding: 10px 15px;
+  border: 1px solid #dce5d9;
+  border-radius: 9px;
+  background: white;
+  color: #315d43;
+  cursor: pointer;
+}
+
+.agent-mic-button.listening {
+  background: #fce8e8;
+  color: #a52d2d;
+}
+
+.agent-send-button {
+  padding: 11px 23px;
+  border: none;
+  border-radius: 9px;
+  background: #315d43;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.agent-send-button:hover {
+  background: #264b35;
+}
+
+.agent-send-button:disabled,
+.agent-mic-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.agent-error {
+  margin: 0 22px 12px;
+  padding: 12px;
+  background: #fff0ed;
+  border-radius: 9px;
+  color: #a43e32;
+  font-size: 13px;
+}
+
+.agent-disclaimer {
+  padding: 12px 18px;
+  color: #8a968b;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .agent-sidebar {
+    width: 210px;
+  }
+
+  .agent-main {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skincare-agent-page {
+    flex-direction: column;
+  }
+
+  .agent-sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .agent-brand {
+    margin-bottom: 15px;
+  }
+
+  .agent-sidebar-content {
+    margin-top: 18px;
+  }
+
+  .agent-sidebar-note,
+  .agent-sidebar-footer {
+    display: none;
+  }
+
+  .agent-main {
+    padding: 18px;
+  }
+
+  .agent-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .agent-header h1 {
+    font-size: 23px;
+  }
+
+  .agent-chat-container {
+    min-height: 550px;
+    max-height: none;
+  }
+
+  .agent-chat-messages {
+    padding: 16px;
+  }
+
+  .agent-message-content {
+    max-width: 88%;
+  }
+}
