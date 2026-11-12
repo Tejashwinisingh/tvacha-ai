@@ -1,7 +1,7 @@
 # 🌿 TvachaAI – Your Personal AI Skincare Companion
 
 <p align="center">
-  **Smarter Skincare. Powered by AI.**
+  Smarter Skincare. Powered by AI.
 </p>
 
 **TvachaAI is a completed AI-powered skincare assistant MVP** designed to make skincare guidance more accessible, personalized and affordable.
